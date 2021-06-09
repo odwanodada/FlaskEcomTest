@@ -1,0 +1,13 @@
+Test Cases:
+
+Unit Testing
+   Models
+-Testing Item
+-Testing User
+
+Base Testing
+-Testing Base Test
+
+Integration Testing
+-Testing Home Page
+-Testing Register
