@@ -11,3 +11,10 @@ Base Testing
 Integration Testing
 -Testing Home Page
 -Testing Register
+
+Integration Testing Routes
+-login
+-logout
+-registration
+-home
+
