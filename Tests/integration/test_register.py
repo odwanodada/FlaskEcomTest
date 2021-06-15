@@ -26,7 +26,7 @@ class TestRegister(BaseTest):
             with self.app_context:
                 response = self.app.post('/register',
                                          data=dict(username="Odwa", email_address="odwa@gmail.com",
-                                                   password1="1234567", password2="1234567", ), follow_redirects=True)
+                                                   password1="246810", password2="#888", ), follow_redirects=True)
 
 
                 user = db.session.query(User).filter_by(email_address="odwa@gmail.com").first()

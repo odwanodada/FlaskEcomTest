@@ -21,6 +21,28 @@ class TestModels(TestCase):
         self.assertEqual(item.owner, 123)
 
 
+    def test_can_buy(self):
+
+        item = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1)
+
+        user = User(id=1, username="odwa", email_address="odwa@gmail.com", password_hash="abcd", budget=5000).can_purchase(item)
+
+        self.assertTrue(user)
+
+    def test_can_sell_item(self):
+        items = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1)
+
+        user = User(id=1, username="odwa", email_address="odwa@gmail.com", password_hash="abcd", budget=900,).can_sell(item_obj=Item)
+
+        self.assertFalse(user)
+
+    def test_budget_prettier(self):
+
+        user = User(id=1, username="odwa", email_address="odwa@gmail.com", password_hash="abcd", budget=5000)
+
+        self.assertTrue(user.prettier_budget, 5000)
+
+
 
 
 
