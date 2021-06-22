@@ -59,3 +59,26 @@ class TestRegister(BaseTest):
                 user1 = db.session.query(User).filter_by(email_address="od@gmail.com").first()
 
                 self.assertNotEqual(user1.password_hash, "7766551")
+
+
+
+    def test_user_exists(self):
+        with self.app:
+            with self.app_context:
+                response = self.app.post('/register', data=dict(username="God", email_address="god@gmail.com",
+                                                                password1=1234567, password2=1234567), follow_redirects=True)
+
+        
+                user = db.session.query(User).filter_by(email_address="god@gmail.com").first()
+
+
+                self.assertTrue(user)
+
+                respons = self.app.post('/register', data=dict(username="God", email_address="god@gmail.com",
+                                                                password1=1234567, password2=1234567), follow_redirects=True)
+
+                user = db.session.query(User).filter_by(email_address="joe@gmail.com").first()
+
+                self.assertTrue(user)
+                self.assertIn(b'There was an error with creating a user: [&#39;Username '
+                              b'already exists! Please try a different username&#39;]', respons.data)
